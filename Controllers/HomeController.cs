@@ -1,4 +1,5 @@
-﻿using ChooseDelice.Models;
+﻿using ChooseDelice.Data;
+using ChooseDelice.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,6 +16,8 @@ namespace ChooseDelice.Controllers
 
         public IActionResult Index()
         {
+            ChooseDeliceContext deliceContext = new();
+            var qdata = deliceContext.Questions.ToList();
             return View();
         }
 
