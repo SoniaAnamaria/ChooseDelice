@@ -18,6 +18,8 @@ namespace ChooseDelice.Controllers
         {
             ChooseDeliceContext deliceContext = new();
             var qdata = deliceContext.Questions.ToList();
+            var ddata = deliceContext.Delices.ToList();
+            var pdata = deliceContext.PartialDecisions.ToList();
             return View();
         }
 
