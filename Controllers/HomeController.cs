@@ -1,13 +1,17 @@
-﻿using ChooseDelice.Models;
+﻿using ChooseDelice.Data;
+using ChooseDelice.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace ChooseDelice.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+     
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,9 +19,29 @@ namespace ChooseDelice.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ChooseDeliceContext deliceContext = new();
+          
+            List <Question>qdata = deliceContext.Questions.ToList();
+            var ddata = deliceContext.Delices.ToList();
+            var pdata = deliceContext.PartialDecisions.ToList();
+
+
+            ViewData["intrebari"] = qdata;
+
+            MainModel model = new MainModel();
+            model.Questions = qdata;
+
+            return View(model);
         }
 
+        [HttpPost]
+
+
+        public ActionResult Submit(MainModel model)
+        {
+
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -1,7 +1,37 @@
-﻿@{
+﻿@model MainModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    pv {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    pa {
+        white-space: nowrap;
+    }
+
+   
+</style>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <pv>          
+        @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+        { 
+            @for (int i = 0; i < Model.Questions.Count; i++)
+            {   
+                @Html.HiddenFor(m => Model.Questions[i].Id)
+                @Html.HiddenFor(m => Model.Questions[i].Attribute)
+                @Html.DisplayFor(m=> Model.Questions[i].Text)
+                @Html.CheckBoxFor(m => Model.Questions[i].isChecked) 
+                <br />
+            }
+                <input type="submit" value="Click" />
+            }
+    </pv>
 </div>
+
+
+

@@ -7,8 +7,25 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ChooseDelice.styles.css" asp-append-version="true" />
+    <style>
+    body{
+
+    background-image: url("https://localhost:7024/images/cakeee.jpg") ;
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+    .bg-image
+
+        {
+            opacity: 0.7;
+        }
+    
+    </style>
+
 </head>
+
 <body>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -20,12 +37,21 @@
             </div>
         </nav>
     </header>
+
+    <body class="bg-image" >  </body>
+  
     <div class="container">
+     
         <main role="main" class="pb-3">
             @RenderBody()
-        </main>
-    </div>
 
+
+            </main>
+        
+    </div>
+  
+
+</body>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - ChooseDelice
@@ -35,5 +61,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
 </html>
