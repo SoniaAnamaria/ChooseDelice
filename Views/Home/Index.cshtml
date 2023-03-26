@@ -1,4 +1,4 @@
-﻿@model Question
+﻿@model MainModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -16,40 +16,21 @@
    
 </style>
 
-<div class="text-center"
-
-    >
-  
-
-        <pv>
-       
-            
-                @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
-                {
-                    
-                  @foreach (var std in ViewData["intrebari"] as IList<Question>)
-                    {
-                @std.Text <pa></pa>  @Html.CheckBoxFor(m => m.IsChecked)
-                @Html.HiddenFor(m => m.Id)
-               
-                @Html.HiddenFor(m => m.Attribute)
-                    
-                        <br />
-                        
-                
-
+<div class="text-center">
+    <pv>          
+        @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+        { 
+            @for (int i = 0; i < Model.Questions.Count; i++)
+            {   
+                @Html.HiddenFor(m => Model.Questions[i].Id)
+                @Html.HiddenFor(m => Model.Questions[i].Attribute)
+                @Html.DisplayFor(m=> Model.Questions[i].Text)
+                @Html.CheckBoxFor(m => Model.Questions[i].isChecked) 
+                <br />
             }
-            
-            <input type="submit" value="Click" />
-                }
-
-            
-
-
-
+                <input type="submit" value="Click" />
+            }
     </pv>
- 
-
 </div>
 
 

@@ -21,20 +21,25 @@ namespace ChooseDelice.Controllers
         {
             ChooseDeliceContext deliceContext = new();
           
-            IList <Question>qdata = deliceContext.Questions.ToList();
+            List <Question>qdata = deliceContext.Questions.ToList();
             var ddata = deliceContext.Delices.ToList();
             var pdata = deliceContext.PartialDecisions.ToList();
 
 
             ViewData["intrebari"] = qdata;
 
-            return View();
+            MainModel model = new MainModel();
+            model.Questions = qdata;
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Submit(Question model)
+
+
+        public ActionResult Submit(MainModel model)
         {
-           
+
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
