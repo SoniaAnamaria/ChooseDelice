@@ -25,9 +25,6 @@ namespace ChooseDelice.Controllers
             var ddata = deliceContext.Delices.ToList();
             var pdata = deliceContext.PartialDecisions.ToList();
 
-
-            ViewData["intrebari"] = qdata;
-
             MainModel model = new MainModel();
             model.Questions = qdata;
 
@@ -35,12 +32,11 @@ namespace ChooseDelice.Controllers
         }
 
         [HttpPost]
-
-
         public ActionResult Submit(MainModel model)
         {
-
-            return View();
+            AnswerModel answer = new AnswerModel();
+            answer.Answer = "Nu exista";
+            return View(answer);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

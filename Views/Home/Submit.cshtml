@@ -1,17 +1,12 @@
-﻿@{
+﻿@model AnswerModel
+@{
     ViewData["Title"] = "Submit";
 }
 
 <div class="text-center">
-
-
-   <p>
-
-       Submit!
-       
-   </p>
-
-
+    <p>
+        @Html.DisplayFor(m=>Model.Answer)
+    </p>
 </div>
 
 
