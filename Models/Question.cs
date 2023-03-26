@@ -6,10 +6,7 @@ public partial class Question
 
     public string Text { get; set; } = null!;
 
-    public string Attribute { get; set; }=null!;
+    public string Attribute { get; set; } = null!;
 
-    public bool isChecked { get; set; } 
-
-
-
+    public bool IsChecked { get; set; }
 }
