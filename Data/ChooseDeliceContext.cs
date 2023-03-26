@@ -1,5 +1,6 @@
 ﻿using ChooseDelice.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace ChooseDelice.Data;
 
@@ -15,6 +16,7 @@ public partial class ChooseDeliceContext : DbContext
     }
 
     public virtual DbSet<Delice> Delices { get; set; }
+ 
 
     public virtual DbSet<PartialDecision> PartialDecisions { get; set; }
 
