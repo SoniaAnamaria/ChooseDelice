@@ -24,7 +24,8 @@
             {   
                 @Html.HiddenFor(m => Model.Questions[i].Id)
                 @Html.HiddenFor(m => Model.Questions[i].Attribute)
-                @Html.DisplayFor(m=> Model.Questions[i].Text)
+                @Html.DisplayFor(m=> Model.Questions[i].Text) 
+                <pa></pa>
                 @Html.CheckBoxFor(m => Model.Questions[i].IsChecked) 
                 <br />
             }
