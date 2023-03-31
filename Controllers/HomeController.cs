@@ -1,8 +1,6 @@
 ﻿using ChooseDelice.Data;
 using ChooseDelice.Models;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
-using Mysqlx.Crud;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -12,7 +10,6 @@ namespace ChooseDelice.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private static List<string> conclusions;
-        private static List<string> partialConclusions;
         private static List<Rule> rules;
      
         public HomeController(ILogger<HomeController> logger)
@@ -24,8 +21,7 @@ namespace ChooseDelice.Controllers
         {
             ChooseDeliceContext deliceContext = new();
             var qdata = deliceContext.Questions.ToList();
-            conclusions = deliceContext.Delices.Select(_ => _.Nume).ToList();
-            partialConclusions = deliceContext.PartialDecisions.Select(_ => _.Conclusion).Distinct().ToList();            
+            conclusions = deliceContext.Delices.Select(_ => _.Nume).ToList();          
 
             rules = deliceContext.Delices.ToList().ConvertAll(_ => new Rule { Premises = GetPremises(_), Conclusion = _.Nume });
             rules.AddRange(deliceContext.PartialDecisions.ToList().ConvertAll(_ => new Rule { Premises = GetPremises(_), Conclusion = _.Conclusion }));
@@ -89,9 +85,9 @@ namespace ChooseDelice.Controllers
                         activated = true;
                         if (conclusions.Contains(rule.Conclusion))
                             if (facts.All(_ => rule.Premises.Contains(_)))
-                                return rule.Conclusion;
+                                return "Desertul corespunzator cerintelor dumneavoastra este " + rule.Conclusion;
                             else
-                                return "Nu exista";
+                                return "Ne cerem scuze, momentan nu avem un desert corespunzator cerintelor dumneavoastra.";
                         else
                         {
                             facts.Add(rule.Conclusion);
@@ -100,7 +96,7 @@ namespace ChooseDelice.Controllers
                     }
                 }
                 if(!activated)
-                   return "Nu exista";
+                   return "Ne cerem scuze, momentan nu avem o sugestie corespunzatoare cerintelor dumneavoastra.";
             }
         }
     }
