@@ -1,6 +1,5 @@
 ﻿using ChooseDelice.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
 
 namespace ChooseDelice.Data;
 
@@ -16,7 +15,6 @@ public partial class ChooseDeliceContext : DbContext
     }
 
     public virtual DbSet<Delice> Delices { get; set; }
- 
 
     public virtual DbSet<PartialDecision> PartialDecisions { get; set; }
 
@@ -90,6 +88,9 @@ public partial class ChooseDeliceContext : DbContext
             entity.Property(e => e.Attribute)
                 .HasMaxLength(30)
                 .HasColumnName("attribute");
+            entity.Property(e => e.IsChecked)
+                .HasDefaultValueSql("'0'")
+                .HasColumnName("isChecked");
             entity.Property(e => e.Text)
                 .HasMaxLength(100)
                 .HasColumnName("text");

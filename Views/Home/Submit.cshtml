@@ -1,17 +1,29 @@
-﻿@{
+﻿@model AnswerModel
+@{
     ViewData["Title"] = "Submit";
 }
 
-<div class="text-center">
-
-
-   <p>
-
-       Submit!
+<style>
+    body {
+        text-align: left;
+   
+    };
+    pv {
+        font-size: 24px;
+        font-weight: 450;
        
-   </p>
+        text-align:justify;
+        overflow-wrap: break-word;
+      
+       
+       
+    }
+    </style>
+    <body>
 
-
-</div>
+   
+   
+      <pv>@Html.DisplayFor(m=>Model.Answer)</pv>
+</body>
 
 

@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\cake.png" />
+    <Compile Remove="images\**" />
+    <Compile Remove="NewFolder\**" />
+    <Content Remove="images\**" />
+    <Content Remove="NewFolder\**" />
+    <EmbeddedResource Remove="images\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="images\**" />
+    <None Remove="NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="Views\NewFolder\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

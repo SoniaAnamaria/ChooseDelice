@@ -5,33 +5,73 @@
 
 <style>
     pv {
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 22px;
+        font-weight:400;
+        text-align:left;
+       
+       
+       
+    }
+
+
+
+    div1 {
+        position: absolute;
+        text-align: center;
+        top: 200px;
+        left: 0px;
+        width: 100vw;
+        height: 100px; /* height of text */
     }
 
     pa {
         white-space: nowrap;
     }
 
-   
+    input[type=submit] {
+     
+        font-size:22 px;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2 px;
+        font-weight: 400;
+        color:white;
+        background-color: black;
+        border: none;
+        border-radius: 45px;
+       
+    }
+
+    div1 {
+        position: absolute;
+        text-align: center;
+        top: 200px;
+        left: 0px;
+        width: 100vw;
+        height: 100px;
+    }
 </style>
 
 <div class="text-center">
-    <pv>          
+    <pv>  <i>       
         @using (Html.BeginForm("Submit", "Home", FormMethod.Post))
         { 
             @for (int i = 0; i < Model.Questions.Count; i++)
             {   
                 @Html.HiddenFor(m => Model.Questions[i].Id)
                 @Html.HiddenFor(m => Model.Questions[i].Attribute)
-                @Html.DisplayFor(m=> Model.Questions[i].Text)
-                @Html.CheckBoxFor(m => Model.Questions[i].isChecked) 
+                   @Html.DisplayFor(m=> Model.Questions[i].Text)
+                    <pa></pa>    <pa></pa>
+                    @Html.CheckBoxFor(m => Model.Questions[i].IsChecked) 
                 <br />
             }
-                <input type="submit" value="Click" />
+            <br />
+                <input type="submit" value="See the ideal delice" />
             }
+        </i>
     </pv>
 </div>
+
 
 
 
